@@ -1,4 +1,4 @@
 - kết nối nodejs với front end
 - chức năng phân quyền 
-- chức năng thêm sản phẩm ,
+- chức năng thêm , sửa , xoá  sản phẩm ,
  - phân quyền , kết nối bảng 
