@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 
 type Props = {}
 
 const Signin = () => {
+    const navigate = useNavigate()
 
     const { register, handleSubmit, formState: { errors } } = useForm<{ email: string, password: string }>();
     const onHandleSubmit = async (data: { email: string, password: string }) => {
@@ -12,6 +14,7 @@ const Signin = () => {
             const response = await axios.post(" http://localhost:8080/api/signin", data)
             console.log(response)
             localStorage.setItem("token", JSON.stringify(response.data.accessToken))
+            navigate("/")
         } catch (error) {
             console.log(error);
         }

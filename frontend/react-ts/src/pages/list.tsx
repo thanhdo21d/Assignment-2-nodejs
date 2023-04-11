@@ -9,6 +9,7 @@ interface DataType {
     age: number;
     address: string;
     tags: string[];
+    categoryId: any
 }
 
 const columns: ColumnsType<DataType> = [
@@ -36,11 +37,23 @@ const columns: ColumnsType<DataType> = [
     {
         title: 'Action',
         key: 'action',
+
         render: (record) => {
+
+
+            const handleDelete = async (categoryId: any) => {
+                try {
+                    const response = await axios.delete(`http://localhost:8080/api/product/${categoryId}`);
+                    console.log(response.data);
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+
             return (
                 <Space size="middle">
-                    <Button type="primary" danger onClick={() => console.log(record.key)}>Sửa</Button>
-                    <Button type="primary" danger onClick={() => console.log(record.key)}>Xóa</Button>
+                    <Button type="primary" danger onClick={() => handleDelete(record.key)}>xoa</Button>
+                    <Button type="primary" danger onClick={() => console.log(record.key)}>update</Button>
                 </Space>
             )
 

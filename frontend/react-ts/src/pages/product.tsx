@@ -11,7 +11,7 @@ function Product({ data }: Props) {
     return (
         <Link to={`/product/${data._id}`}>
 
-            <div className="product mb-[60px] border-2 border-fuchsia-500 p-4 w-[260px] h-[400px] ">
+            <div className="product mb-[60px] border-2 shadow-2xl rounded-lg p-4 w-[260px] h-[400px] ">
                 <div className="image text-center">
                     <img className="w-[250px] h-[250px] cursor-pointer" src={data.image} alt="" />
                 </div>

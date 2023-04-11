@@ -2,13 +2,15 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios';
 import React from 'react'
 import { signup } from '../api/product';
-
+import { useNavigate } from 'react-router-dom';
 function Signup() {
     const { register, handleSubmit, formState: { errors } } = useForm<{ name: string, email: string, password: string, confirmPassword: string }>()
     const onSubmit = async (data: { name: string, email: string, password: string, confirmPassword: string }) => {
         const response = await axios.post(" http://localhost:8080/api/signup", data)
         console.log(response)
+
     }
+    const navigate = useNavigate()
     return (
         <div className='mx-auto  w-[600px] h-[600px] bg-slate-200 text-center'>
             <div className="flex">
@@ -53,7 +55,7 @@ function Signup() {
                         </div>
 
 
-                        <button className='h-[35px] w-[300px] bg-red-500 border-[1px] rounded-lg'>submit</button>
+                        <button className='h-[35px] w-[300px] bg-red-500 border-[1px] rounded-lg' onClick={() => { navigate("/signin") }}>submit</button>
                     </form>
                 </div>
                 <div className="logo h-[400px]">
